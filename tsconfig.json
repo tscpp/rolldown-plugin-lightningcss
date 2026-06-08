@@ -1,0 +1,15 @@
+{
+  "extends": ["@tsconfig/strictest"],
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "types": ["node"],
+    "verbatimModuleSyntax": true,
+    "noEmit": true
+  },
+  "include": ["src", "test"],
+  "typeAcquisition": {
+    "enable": false
+  }
+}

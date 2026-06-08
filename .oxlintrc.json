@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "options": {
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "overrides": [
+    {
+      "files": ["*.test.ts", "*.spec.ts", "*.test.js", "*.spec.js"],
+      "rules": {
+        "typescript/no-floating-promises": "allow"
+      }
+    }
+  ]
+}
