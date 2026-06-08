@@ -5,7 +5,8 @@
     "dist"
   ],
   "type": "module",
-  "exports": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "scripts": {
     "lint": "oxlint",
     "format": "oxfmt",
