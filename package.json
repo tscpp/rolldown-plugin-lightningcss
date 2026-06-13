@@ -2,6 +2,7 @@
   "name": "rolldown-plugin-lightningcss",
   "version": "0.1.0",
   "license": "MIT",
+  "repository": "tscpp/rolldown-plugin-lightningcss",
   "files": [
     "dist"
   ],
