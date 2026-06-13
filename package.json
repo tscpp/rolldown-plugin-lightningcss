@@ -12,7 +12,8 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "test": "node --test test/*.{test,spec}.{ts,js}",
-    "build": "rolldown -c"
+    "build": "rolldown -c",
+    "prepublishOnly": "npm run lint && npm run build && npm run test"
   },
   "dependencies": {
     "@jridgewell/remapping": "^2.3.5"
