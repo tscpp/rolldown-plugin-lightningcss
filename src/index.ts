@@ -78,6 +78,10 @@ export function lightningcss<C extends CustomAtRules>(options?: LightningcssOpti
         for (const dependency of bundled.dependencies!) {
           switch (dependency.type) {
             case "url": {
+						  if (dependency.url.startsWith('data:')) {
+							  magicString.replace(dependency.placeholder, dependency.url);
+							  break;
+						  }              
               const resolved = await this.resolve(dependency.url, id, { kind: "new-url" });
               if (!resolved) {
                 throw this.error(`Unable to resolve '${dependency.url}'.`, dependency.loc.start);
