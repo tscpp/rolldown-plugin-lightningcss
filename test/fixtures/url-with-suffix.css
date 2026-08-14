@@ -1,0 +1,7 @@
+.foo {
+  a: url(./1x1.png?foo#bar);
+  b: url(./1x1.png#foo?bar);
+  c: url(./1x1.png?foo);
+  d: url(./1x1.png#foo);
+  e: url(./1x1.png);
+}

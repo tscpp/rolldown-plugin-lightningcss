@@ -83,15 +83,26 @@ export function lightningcss<C extends CustomAtRules>(options?: LightningcssOpti
                 throw this.error(`Unable to resolve '${dependency.url}'.`, dependency.loc.start);
               }
 
-              const content = await this.fs.readFile(resolved.id);
+              if (resolved.external) {
+                magicString.replace(dependency.placeholder, resolved.id);
+              } else {
+                const match = /^(.*?)([?#].*)?$/.exec(resolved.id);
+                const path = match?.[1] ?? resolved.id;
+                const suffix = match?.[2] ?? "";
 
-              const referenceId = this.emitFile({
-                type: "asset",
-                name: basename(resolved.id),
-                source: content,
-              });
+                const content = await this.fs.readFile(path);
 
-              magicString.replace(dependency.placeholder, getUrlPlaceholder(referenceId));
+                const referenceId = this.emitFile({
+                  type: "asset",
+                  name: basename(path),
+                  source: content,
+                });
+
+                magicString.replace(
+                  dependency.placeholder,
+                  getUrlPlaceholder(referenceId) + suffix,
+                );
+              }
               break;
             }
 
