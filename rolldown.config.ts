@@ -15,5 +15,5 @@ export default defineConfig({
   },
   platform: "node",
   external: (id) => deps.includes(id) || deps.some((dep) => id.startsWith(`${dep}/`)),
-  plugins: [dts({ tsgo: true })],
+  plugins: [dts()],
 });
