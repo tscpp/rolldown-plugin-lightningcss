@@ -38,3 +38,14 @@ it("resolves url with suffix", async () => {
   assert(source.includes(".png#foo"));
   assert(source.includes(".png"));
 });
+
+it("preserves externals urls", async () => {
+  const result = await rolldown({
+    input: ["test/fixtures/external-url.css"],
+    plugins: [lightningcss()],
+  });
+  const { output } = await result.generate();
+  const source = output.find((asset) => asset.fileName === "external-url.css").source.toString();
+  assert(source.includes("https://example.com/bg.png"));
+  assert(source.includes("data:foo"));
+});
